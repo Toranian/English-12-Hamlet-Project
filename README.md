@@ -1,4 +1,4 @@
-# hamlet
+## Hamlet Project
 
 This project is meant for my English 12 class on Shakespeare's play, Hamlet.
 
