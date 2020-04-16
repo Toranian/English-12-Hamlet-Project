@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hamlet/characters.dart';
 
 import 'setting.dart';
 import 'themes.dart';
@@ -15,13 +16,14 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primaryColor: Colors.white,
-        accentColor: Colors.pink[400],
+        accentColor: Colors.purple,
         appBarTheme: AppBarTheme(
-          color: Colors.pink[400],
+          color: Colors.purple,
           iconTheme: IconThemeData(color: Colors.white),
+          elevation: 10.0,
         ),
         textTheme: TextTheme(
-          body1: TextStyle(fontFamily: 'Apercu'),
+          body1: TextStyle(),
         ),
         backgroundColor: Colors.white,
       ),
