@@ -19,16 +19,16 @@ class About extends StatelessWidget {
       ),
       body: Center(
         child: Padding(
-          padding: const EdgeInsets.all(8.0),
+          padding: const EdgeInsets.all(15.0),
           child: Neumorphic(
             boxShape: NeumorphicBoxShape.roundRect(
               borderRadius: BorderRadius.circular(20.0),
             ),
             style: NeumorphicStyle(
-              shape: NeumorphicShape.concave,
-              depth: -50.0,
+              shape: NeumorphicShape.convex,
+              depth: 10.0,
               lightSource: LightSource.topLeft,
-              color: Colors.grey[100],
+              color: Colors.white,
               intensity: 3.0,
             ),
             child: Padding(
@@ -37,23 +37,56 @@ class About extends StatelessWidget {
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: <Widget>[
-                  CircleAvatar(
-                    backgroundImage: AssetImage('assets/isaacmorrow.jpg'),
-                    radius: 100.0,
+                  Neumorphic(
+                    boxShape: NeumorphicBoxShape.roundRect(
+                      borderRadius: BorderRadius.circular(500.0),
+                    ),
+                    style: NeumorphicStyle(
+                      intensity: 100.0,
+                      depth: 50,
+                      color: Colors.grey,
+                      shape: NeumorphicShape.flat,
+                      lightSource: LightSource.topLeft,
+                    ),
+                    child: CircleAvatar(
+                      backgroundImage: AssetImage('assets/isaacmorrow.jpg'),
+                      radius: 130.0,
+                    ),
                   ),
                   SizedBox(
                     height: 15.0,
                   ),
-                  Text(
-                    "Isaac Morrow",
-                    style: TextStyle(
-                        fontSize: 24.0,
-                        letterSpacing: 3.0,
-                        fontWeight: FontWeight.bold),
-                  ),
-                  Text(
-                    "Software Developer",
-                    style: TextStyle(fontSize: 18.0),
+                  Neumorphic(
+                    boxShape: NeumorphicBoxShape.roundRect(
+                      borderRadius: BorderRadius.circular(500.0),
+                    ),
+                    style: NeumorphicStyle(
+                      intensity: 10.0,
+                      depth: 10,
+                      color: Colors.white,
+                      shape: NeumorphicShape.convex,
+                      lightSource: LightSource.topLeft,
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 22.0, vertical: 12.0),
+                      child: Column(
+                        children: <Widget>[
+                          Text(
+                            "Isaac Morrow",
+                            style: TextStyle(
+                              fontSize: 24.0,
+                              letterSpacing: 2.5,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          Text(
+                            "Software Developer",
+                            style: TextStyle(fontSize: 18.0),
+                          ),
+                        ],
+                      ),
+                    ),
                   ),
                   SizedBox(
                     height: 15.0,
