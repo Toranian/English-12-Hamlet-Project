@@ -53,7 +53,7 @@ class Characters extends StatelessWidget {
             context,
             'horatio.jpg',
             'Horatio',
-            '	Hamlet’s close friend, who studied with the prince at the university in Wittenberg. Horatio is loyal and helpful to Hamlet throughout the play. After Hamlet’s death, Horatio remains alive to tell Hamlet’s story.',
+            'Hamlet’s close friend, who studied with the prince at the university in Wittenberg. Horatio is loyal and helpful to Hamlet throughout the play. After Hamlet’s death, Horatio remains alive to tell Hamlet’s story.',
           ),
           CharacterItem(
             context,
@@ -61,7 +61,6 @@ class Characters extends StatelessWidget {
             'Ophelia',
             'Polonius’s daughter, a beautiful young woman with whom Hamlet has been in love. Ophelia is a sweet and innocent young girl, who obeys her father and her brother, Laertes. Dependent on men to tell her how to behave, she gives in to Polonius’s schemes to spy on Hamlet. Even in her lapse into madness and death, she remains maidenly, singing songs about flowers and finally drowning in the river amid the flower garlands she had gathered.',
           ),
-          
         ],
       ),
       drawer: CustomDrawer(),
@@ -100,7 +99,7 @@ Widget CharacterItem(
                 SizedBox(height: 5.0),
                 Text(
                   name,
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18.0),
+                  style: TextStyle(fontSize: 18.0),
                 ),
               ],
             ),
@@ -132,6 +131,7 @@ Widget CharacterDetail(
     String name,
     String tag}) {
   return Scaffold(
+    backgroundColor: Colors.grey[100],
     appBar: AppBar(
       title: Text(
         "$name",
@@ -146,42 +146,57 @@ Widget CharacterDetail(
     body: Center(
       child: Padding(
         padding: const EdgeInsets.all(15.0),
-        child: Padding(
-          padding: const EdgeInsets.all(15.0),
-          child: ListView(
-            children: <Widget>[
-              Column(
-                mainAxisSize: MainAxisSize.min,
-                children: <Widget>[
-                  Hero(
-                    tag: tag,
-                    child: CircleAvatar(
-                      radius: 150.0,
-                      backgroundImage:
-                          AssetImage('assets/images/characters/$imageName'),
+        child: Neumorphic(
+          boxShape: NeumorphicBoxShape.roundRect(
+            borderRadius: BorderRadius.circular(25.0),
+          ),
+          style: NeumorphicStyle(
+            intensity: 10.0,
+            depth: 10,
+            color: Colors.white,
+            shape: NeumorphicShape.convex,
+            lightSource: LightSource.top,
+          ),
+          child: Padding(
+            padding: const EdgeInsets.all(15.0),
+            child: ListView(
+              children: <Widget>[
+                Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: <Widget>[
+                    Hero(
+                      tag: tag,
+                      child: CircleAvatar(
+                        radius: 150.0,
+                        backgroundImage:
+                            AssetImage('assets/images/characters/$imageName'),
+                      ),
                     ),
-                  ),
-                  SizedBox(height: 10.0),
-                  Text(
-                    name,
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 28.0,
+                    SizedBox(height: 10.0),
+                    Text(
+                      name,
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 35.0,
+                        fontFamily: 'Apercu',
+                      ),
                     ),
-                  ),
-                  SizedBox(height: 10.0),
-                  Text(
-                    description,
-                    style: TextStyle(
-                      // fontFamily: 'Apercu',
-                      fontSize: 16.0,
+                    
+                    SizedBox(height: 10.0),
+                    Text(
+                      description,
+                      style: TextStyle(
+                        fontFamily: 'Apercu',
+                        fontSize: 18.0,
+                        height: 1.5,
+                      ),
+                      // textAlign: TextAlign.center,
+                      overflow: TextOverflow.fade,
                     ),
-                    textAlign: TextAlign.justify,
-                    overflow: TextOverflow.fade,
-                  ),
-                ],
-              ),
-            ],
+                  ],
+                ),
+              ],
+            ),
           ),
         ),
       ),
