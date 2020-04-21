@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'drawer.dart';
+import 'style.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:route_transitions/route_transitions.dart';
 
@@ -25,182 +25,57 @@ class Characters extends StatelessWidget {
         mainAxisSpacing: 4.0,
         crossAxisSpacing: 4.0,
         children: <Widget>[
-          CharacterItem(
+          GridItem(
             context,
             'hamlet.jpg',
             'Hamlet',
-            'The Prince of Denmark, the title character, and the protagonist. About thirty years old at the start of the play, Hamlet is the son of Queen Gertrude and the late King Hamlet, and the nephew of the present king, Claudius. Hamlet is melancholy, bitter, and cynical, full of hatred for his uncle’s scheming and disgust for his mother’s sexuality. A reflective and thoughtful young man who has studied at the University of Wittenberg, Hamlet is often indecisive and hesitant, but at other times prone to rash and impulsive acts.',
+            '''Hamlet is The Prince of Denmark and is the main character and protagonist of the play. Hamlet is the son of Queen Gertrude and the nephew of the current King, Claudius. Throughout the play, it becomes clear that Hamlet is troubled and is unknown to the audience whether or not he is insane, or just playing the part. Hamlet straight up dies in the end.''',
           ),
-          CharacterItem(
+          GridItem(
             context,
             'claudius.jpg',
             'Claudius',
-            'The King of Denmark, Hamlet’s uncle, and the play’s antagonist. The villain of the play, Claudius is a calculating, ambitious politician, driven by his sexual appetites and his lust for power, but he occasionally shows signs of guilt and human feeling—his love for Gertrude, for instance, seems sincere.',
+            'The King of Denmark, Hamlet’s uncle, and the play’s antagonist. Claudius seems to have very little emotion, especially when it comes to his brothers death. The only times he shows true compassion is for his wife, Gertrude.',
           ),
-          CharacterItem(
+          GridItem(
             context,
             'gertrude.jpg',
             'Gertrude',
-            'The Queen of Denmark, Hamlet’s mother, recently married to Claudius. Gertrude loves Hamlet deeply, but she is a shallow, weak woman who seeks affection and status more urgently than moral rectitude or truth.',
+            'The Queen of Denmark, Hamlet’s mother, recently married to Claudius. She seeks affection and personal gain more than making her son happy.',
           ),
-          CharacterItem(
+          GridItem(
             context,
             'polonius.jpg',
             'Polonius',
-            'The Lord Chamberlain of Claudius’s court, a pompous, conniving old man. Polonius is the father of Laertes and Ophelia.',
+            'Polonius is the father of Laertes and Ophelia. Polonius gives some popular advice to his son, Laertes before he heads off to university.',
           ),
-          CharacterItem(
+          GridItem(
             context,
             'horatio.jpg',
             'Horatio',
-            'Hamlet’s close friend, who studied with the prince at the university in Wittenberg. Horatio is loyal and helpful to Hamlet throughout the play. After Hamlet’s death, Horatio remains alive to tell Hamlet’s story.',
+            'Hamlet\’s closest friend, a scholar who has studied at the University of Wittenberg. Horatio is loyal and helpful to Hamlet throughout the play. After Hamlet’s death, Horatio remains alive to tell Hamlet\’s story.',
           ),
-          CharacterItem(
+          GridItem(
             context,
             'ophelia.jpg',
             'Ophelia',
-            'Polonius’s daughter, a beautiful young woman with whom Hamlet has been in love. Ophelia is a sweet and innocent young girl, who obeys her father and her brother, Laertes. Dependent on men to tell her how to behave, she gives in to Polonius’s schemes to spy on Hamlet. Even in her lapse into madness and death, she remains maidenly, singing songs about flowers and finally drowning in the river amid the flower garlands she had gathered.',
+            'Polonius’s daughter, a beautiful young woman who Hamlet has fallen in love with. Ophelia is impressionable and easily manipulated, so she was Hamlets first target for his act of insanity.',
+          ),
+          GridItem(
+            context,
+            'laertes.png',
+            'Laertes',
+            'Polonius\'s son and Ophelia\'s brother. Laertes spends most of his time in France during the play.',
+          ),
+          GridItem(
+            context,
+            'fortinbras.jpg',
+            'Fortinbras',
+            'Prince of Norway. His father, Fortinbras was killed by Hamlet\'s father, Hamlet. Fortinbras wants to invade Denmark to avenge his fathers death.',
           ),
         ],
       ),
       drawer: CustomDrawer(),
     );
   }
-}
-
-Widget CharacterItem(
-    BuildContext context, String imageName, String name, String description) {
-  return Padding(
-    padding: const EdgeInsets.all(8.0),
-    child: Hero(
-      tag: name,
-      child: FlatButton(
-        padding: EdgeInsets.all(0.0),
-        child: Neumorphic(
-          boxShape: NeumorphicBoxShape.roundRect(
-            borderRadius: BorderRadius.circular(20.0),
-          ),
-          style: NeumorphicStyle(
-            shape: NeumorphicShape.convex,
-            depth: 10.0,
-            lightSource: LightSource.top,
-            color: Colors.white,
-            intensity: 3.0,
-          ),
-          child: Center(
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: <Widget>[
-                CircleAvatar(
-                  radius: 65.0,
-                  backgroundImage:
-                      AssetImage('assets/images/characters/$imageName'),
-                ),
-                SizedBox(height: 5.0),
-                Text(
-                  name,
-                  style: TextStyle(fontSize: 18.0),
-                ),
-              ],
-            ),
-          ),
-        ),
-        onPressed: () {
-          Navigator.of(context).push(
-            PageRouteTransition(
-              animationType: AnimationType.fade,
-              builder: (context) => CharacterDetail(
-                context: context,
-                description: description,
-                imageName: imageName,
-                name: name,
-                tag: name,
-              ),
-            ),
-          );
-        },
-      ),
-    ),
-  );
-}
-
-Widget CharacterDetail(
-    {BuildContext context,
-    String description,
-    String imageName,
-    String name,
-    String tag}) {
-  return Scaffold(
-    backgroundColor: Colors.grey[100],
-    appBar: AppBar(
-      title: Text(
-        "$name",
-        style: TextStyle(
-          color: Colors.white,
-          fontFamily: 'Apercu',
-          fontWeight: FontWeight.bold,
-        ),
-      ),
-      centerTitle: true,
-    ),
-    body: Center(
-      child: Padding(
-        padding: const EdgeInsets.all(15.0),
-        child: Neumorphic(
-          boxShape: NeumorphicBoxShape.roundRect(
-            borderRadius: BorderRadius.circular(25.0),
-          ),
-          style: NeumorphicStyle(
-            intensity: 10.0,
-            depth: 10,
-            color: Colors.white,
-            shape: NeumorphicShape.convex,
-            lightSource: LightSource.top,
-          ),
-          child: Padding(
-            padding: const EdgeInsets.all(15.0),
-            child: ListView(
-              children: <Widget>[
-                Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: <Widget>[
-                    Hero(
-                      tag: tag,
-                      child: CircleAvatar(
-                        radius: 150.0,
-                        backgroundImage:
-                            AssetImage('assets/images/characters/$imageName'),
-                      ),
-                    ),
-                    SizedBox(height: 10.0),
-                    Text(
-                      name,
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 35.0,
-                        fontFamily: 'Apercu',
-                      ),
-                    ),
-                    
-                    SizedBox(height: 10.0),
-                    Text(
-                      description,
-                      style: TextStyle(
-                        fontFamily: 'Apercu',
-                        fontSize: 18.0,
-                        height: 1.5,
-                      ),
-                      // textAlign: TextAlign.center,
-                      overflow: TextOverflow.fade,
-                    ),
-                  ],
-                ),
-              ],
-            ),
-          ),
-        ),
-      ),
-    ),
-    drawer: CustomDrawer(),
-  );
 }
