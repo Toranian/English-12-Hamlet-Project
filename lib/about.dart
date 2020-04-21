@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'drawer.dart';
+import 'style.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 
 class About extends StatelessWidget {
@@ -102,7 +102,7 @@ class About extends StatelessWidget {
                   SizedBox(height: 10.0),
                   Text(
                     "Also, Mr. Murphy is cool.",
-                    style: TextStyle(fontSize: 10.0),
+                    style: TextStyle(fontSize: 16.0),
                   ),
                 ],
               ),
